@@ -1,5 +1,6 @@
 package main
 
+// this file for cli & http
 import (
 	"flag"
 	"fmt"
@@ -10,15 +11,17 @@ import (
 	"strings"
 )
 
-// TODO
-// move todos to gitlab webui
 var (
 	// HTTP
 	serve = flag.Bool("s", false, "run http server")
 	port  = flag.Int("p", 8080, "port of server, default 8080")
-	// translations
-	acute = flag.Bool("a", false, "acute")
-	// TODO add more translations
+	// CLI // translations
+	acute       = flag.Bool("a", false, "acute")
+	caron       = flag.Bool("c", false, "caron")
+	diaeresis   = flag.Bool("d", false, "diaeresis")
+	doubleGrave = flag.Bool("dg", false, "double_grave")
+	grave       = flag.Bool("g", false, "grave")
+	tilde       = flag.Bool("t", false, "tilde")
 )
 
 func main() {
@@ -30,22 +33,31 @@ func main() {
 		log.Fatal(http.ListenAndServe(url, nil))
 	}
 	var which string
-	// TODO remove flags from text
 	text := strings.Join(os.Args[1:], " ")
 	switch {
 	case *acute:
 		which = "acute"
+	case *caron:
+		which = "caron"
+	case *diaeresis:
+		which = "diaeresis"
+	case *doubleGrave:
+		which = "double_grave"
+	case *grave:
+		which = "grave"
+	case *tilde:
+		which = "tilde"
 	default:
 		fmt.Println(text)
 		return
 	}
-	translated := translate(text, getTranslations()[which])
+	translated := Translate(text, getAllTranslations()[which])
 	fmt.Println(translated)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	which := strings.Split(r.URL.Path, "/")[1]
 	text := strings.Split(r.URL.Path, "/")[2]
-	translated := translate(text, getTranslations()[which])
+	translated := Translate(text, getAllTranslations()[which])
 	fmt.Fprintf(w, "%s\n", translated)
 }

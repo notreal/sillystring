@@ -1,18 +1,60 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
-func TestAcute(t *testing.T) {
-	var tests = []struct {
-		input string
-		want  string
-	}{
-		{"B", "B"},
-		{"Nick Rains", "Ńíćk Ŕáíńś"},
+// Not worth testing
+
+// getAllTranslations
+// getTranslation
+
+func Test_translate(t *testing.T) {
+	type args struct {
+		s string
+		t Translation
 	}
-	for _, test := range tests {
-		if got := translate(test.input, getTranslations()["acute"]); got != test.want {
-			t.Errorf("acute: %v -> %v", test.input, got)
-		}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			"Test Acute",
+			args{"Test Acute", GetTranslation("acute")},
+			"Téśt Áćúté",
+		},
+		{
+			"Test Caron",
+			args{"Test Caron", GetTranslation("caron")},
+			"Ťěšt Čǎřǒň",
+		},
+		{
+			"Test Diaeresis",
+			args{"Test Diaeresis", GetTranslation("diaeresis")},
+			"Tësẗ Dïӓërësïs",
+		},
+		{
+			"Test Double Grave",
+			args{"Test Double Grave", GetTranslation("double_grave")},
+			"Tȅst Dȍȕblȅ Gȑȁvȅ",
+		},
+		{
+			"Test Grave",
+			args{"Test Grave", GetTranslation("grave")},
+			"Tèst Gràvè",
+		},
+		{
+			"Test Tilde",
+			args{"Test Tilde", GetTranslation("tilde")},
+			"Tẽst Tĩldẽ",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Translate(tt.args.s, tt.args.t); got != tt.want {
+				t.Errorf("translate() = %v, want %v", got, tt.want)
+			}
+		})
 	}
 }
