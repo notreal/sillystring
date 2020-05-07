@@ -11,8 +11,8 @@ func TestAcute(t *testing.T) {
 		{"Nick Rains", "Ńíćk Ŕáíńś"},
 	}
 	for _, test := range tests {
-		if got := Acute(test.input); got != test.want {
-			t.Errorf("Acute(%v) -> %v", test.input, got)
+		if got := translate(test.input, getTranslations()["acute"]); got != test.want {
+			t.Errorf("acute: %v -> %v", test.input, got)
 		}
 	}
 }
