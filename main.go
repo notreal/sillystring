@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -33,7 +32,7 @@ func main() {
 		log.Fatal(http.ListenAndServe(url, nil))
 	}
 	var which string
-	text := strings.Join(os.Args[1:], " ")
+	text := strings.Join(flag.Args(), " ")
 	switch {
 	case *acute:
 		which = "acute"
