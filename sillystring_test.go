@@ -1,6 +1,7 @@
 package main
 
 import (
+	"reflect"
 	"testing"
 )
 
@@ -54,6 +55,31 @@ func Test_translate(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := Translate(tt.args.s, tt.args.t); got != tt.want {
 				t.Errorf("translate() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestAvailableTranslations(t *testing.T) {
+	tests := []struct {
+		name string
+		want []string
+	}{
+		{"Test Available Translations",
+			[]string{
+				"acute",
+				"caron",
+				"diaeresis",
+				"double_grave",
+				"grave",
+				"tilde",
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := AvailableTranslations(); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("AvailableTranslations() = %v, want %v", got, tt.want)
 			}
 		})
 	}

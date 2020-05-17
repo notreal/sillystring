@@ -2,7 +2,10 @@
 // helpful https://unicode-table.com
 package main
 
-import "strings"
+import (
+	"sort"
+	"strings"
+)
 
 // Translation maps input & output characters
 type Translation struct {
@@ -47,8 +50,15 @@ func GetTranslation(which string) Translation {
 	return getAllTranslations()[which]
 }
 
-// AvailableTranslations
-// func AvailableTranslations() []string {
+// AvailableTranslations returns names of translations
+func AvailableTranslations() []string {
+	var names []string
+	for name := range getAllTranslations() {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	return names
+}
 
 // Translate a string
 func Translate(s string, t Translation) string {
