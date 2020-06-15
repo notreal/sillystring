@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Silly String</title>
+    </head>
+    <body>
+        <h1>Silly String</h1>
+        <p>Type something below, select your style and click Go</p>
+        <form action="/api" method="get" name="sillyform" id="sillyform">
+            <input type="text" id="what" name="what">
+            <select id="which" name="which">
+                <option value="acute">Áćúté</option>
+                <option value="caron">Čǎřǒň</option>
+                <option value="diaeresis">Dïӓërësïs</option>
+                <option value="double_grave">Dȍȕblȅ Gȑȁvȅ</option>
+                <option value="grave">Gràvè</option>
+                <option value="tilde">Tĩldẽ</option>
+            </select>
+            <input type="submit" value="Go">
+        </form>
+        <script type="text/javascript">
+            sillyform.onsubmit = async (e) => {
+                e.preventDefault();
+                let sillyform = document.getElementById("sillyform");
+                let formData = new FormData(sillyform);
+                let formArray = [];
+                for(var pair of formData.entries()) {
+                    formArray.push(pair.join("=")); 
+                };
+                let response = await fetch("/", {
+                    method: "POST",
+                    body: formArray.join("&"),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    }
+                });
+                let result = await response.text();
+                document.getElementById("transformed").innerHTML = result;
+            };
+        </script>
+        <div id="transformed"></div>
+    </body>
+</html>

@@ -28,7 +28,7 @@ func main() {
 	if *serve {
 		http.HandleFunc("/", handler)
 		url := "localhost:" + strconv.Itoa(*port)
-		fmt.Println(url)
+		fmt.Println("Serving: " + url)
 		log.Fatal(http.ListenAndServe(url, nil))
 	}
 	var which string
@@ -55,8 +55,23 @@ func main() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	which := strings.Split(r.URL.Path, "/")[1]
-	text := strings.Split(r.URL.Path, "/")[2]
-	translated := Translate(text, getAllTranslations()[which])
-	fmt.Fprintf(w, "%s\n", translated)
+	if r.URL.Path != "/" {
+		http.Error(w, "404 not found.", http.StatusNotFound)
+		return
+	}
+	switch r.Method {
+	case "GET":
+		http.ServeFile(w, r, "sillystring.html")
+	case "POST":
+		if err := r.ParseForm(); err != nil {
+			fmt.Fprintf(w, "ParseForm() err: %v", err)
+			return
+		}
+		which := r.FormValue("which")
+		what := r.FormValue("what")
+		translated := Translate(what, getAllTranslations()[which])
+		fmt.Fprintf(w, "%s", translated)
+	default:
+		fmt.Fprintf(w, "Only GET and POST methods are supported.")
+	}
 }
