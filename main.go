@@ -13,7 +13,7 @@ import (
 var (
 	// HTTP
 	serve = flag.Bool("s", false, "run http server")
-	port  = flag.Int("p", 8080, "port of server, default 8080")
+	port  = flag.Int("p", 8080, "port of server")
 	// CLI // translations
 	acute       = flag.Bool("a", false, "acute")
 	caron       = flag.Bool("c", false, "caron")
@@ -28,7 +28,7 @@ func main() {
 	if *serve {
 		http.HandleFunc("/", handler)
 		url := "localhost:" + strconv.Itoa(*port)
-		fmt.Println("Serving: " + url)
+		fmt.Println("Serving at " + url)
 		log.Fatal(http.ListenAndServe(url, nil))
 	}
 	var which string
