@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -15,15 +16,27 @@ var (
 	serve = flag.Bool("s", false, "run http server")
 	port  = flag.Int("p", 8080, "port of server")
 	// CLI // translations
-	acute       = flag.Bool("a", false, "acute")
-	caron       = flag.Bool("c", false, "caron")
-	diaeresis   = flag.Bool("d", false, "diaeresis")
-	doubleGrave = flag.Bool("dg", false, "double_grave")
-	grave       = flag.Bool("g", false, "grave")
-	tilde       = flag.Bool("t", false, "tilde")
+	acute      = flag.Bool("a", false, "acute")
+	caron      = flag.Bool("ca", false, "caron")
+	circumflex = flag.Bool("ci", false, "circumflex")
+	diaeresis  = flag.Bool("d", false, "diaeresis")
+	dotAbove   = flag.Bool("da", false, "dot_above")
+	dotBelow   = flag.Bool("db", false, "dot_below")
+	fraktur    = flag.Bool("f", false, "fraktur")
+	grave      = flag.Bool("g", false, "grave")
+	hook       = flag.Bool("ho", false, "hook")
+	tilde      = flag.Bool("t", false, "tilde")
 )
 
 func main() {
+	// Usage overrides default help message
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Usage of %s:\n", os.Args[0])
+		flag.VisitAll(func(f *flag.Flag) {
+			dashFlag := "-" + f.Name
+			fmt.Fprintf(os.Stderr, "  %3s  %v\n", dashFlag, f.Usage) // f.Value
+		})
+	}
 	flag.Parse()
 	if *serve {
 		http.HandleFunc("/", handler)
@@ -38,12 +51,20 @@ func main() {
 		which = "acute"
 	case *caron:
 		which = "caron"
+	case *circumflex:
+		which = "circumflex"
 	case *diaeresis:
 		which = "diaeresis"
-	case *doubleGrave:
-		which = "double_grave"
+	case *dotAbove:
+		which = "dot_above"
+	case *dotBelow:
+		which = "dot_below"
+	case *fraktur:
+		which = "fraktur"
 	case *grave:
 		which = "grave"
+	case *hook:
+		which = "hook"
 	case *tilde:
 		which = "tilde"
 	default:

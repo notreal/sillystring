@@ -25,17 +25,33 @@ func getAllTranslations() map[string]Translation {
 			"ACDEGHIKNORSTUZaceghijknorsuz",
 			[]rune("ǍČĎĚǦȞǏǨŇǑŘŠŤǓŽǎčěǧȟǐǰǩňǒřšǔž"),
 		},
+		"circumflex": Translation{
+			"ACEGHIJOSUWYZaceghijosuwyz",
+			[]rune("ÂĈÊĜĤÎĴÔŜÛŴŶẐâĉêĝĥîĵôŝûŵŷẑ"),
+		},
 		"diaeresis": Translation{
 			"AEHIOUWXYaehiotwxy",
 			[]rune("ӒËḦÏÖÜẄẌŸӓëḧïöẗẅẍÿ"),
 		},
-		"double_grave": Translation{
-			"AEIORUaeioru",
-			[]rune("ȀȄȈȌȐȔȁȅȉȍȑȕ"),
+		"dot_above": Translation{
+			"ABCDEFGHIMNOPRSTWXYZabcdefghmnoprstwxyz",
+			[]rune("ȦḂĊḊĖḞĠḢİṀṄȮṖṘṠṪẆẊẎŻȧḃċḋėḟġḣṁṅȯṗṙṡṫẇẋẏż"),
+		},
+		"dot_below": Translation{
+			"ABDEHIKLMNORSTUVWYZabdehiklmnorstuvwyz",
+			[]rune("ẠḄḌẸḤỊḲḶṂṆỌṚṢṬỤṾẈỴẒạḅḍẹḥịḳḷṃṇọṛṣṭụṿẉỵẓ"),
+		},
+		"fraktur": Translation{
+			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+			[]rune("𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟"),
 		},
 		"grave": Translation{
 			"AEINOUWYaeinouwy",
 			[]rune("ÀÈÌǸÒÙẀỲàèìǹòùẁỳ"),
+		},
+		"hook": Translation{
+			"BCDFGHKMNPTVWYZbcdfghklmnpstvwyz",
+			[]rune("ƁƇƊƑƓꞪƘⱮƝƤƬƲⱲƳȤɓƈɗƒɠɦƙɭɱɲƥʂƭʋⱳƴȥ"),
 		},
 		"tilde": Translation{
 			"AEINOUVYaeinouvy",
