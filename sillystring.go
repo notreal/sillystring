@@ -1,6 +1,6 @@
 // aesthetic string translations
 // helpful https://unicode-table.com
-package main
+package sillystring
 
 import (
 	"sort"
@@ -13,7 +13,7 @@ type Translation struct {
 	dest   []rune
 }
 
-func getAllTranslations() map[string]Translation {
+func GetAllTranslations() map[string]Translation {
 	// global maps are tricky so get translations here
 	return map[string]Translation{
 		// keep alphabetized
@@ -63,13 +63,13 @@ func getAllTranslations() map[string]Translation {
 // GetTranslation gives you a named Translation
 func GetTranslation(which string) Translation {
 	// looks cleaner in calling code
-	return getAllTranslations()[which]
+	return GetAllTranslations()[which]
 }
 
 // AvailableTranslations returns names of translations
 func AvailableTranslations() []string {
 	var names []string
-	for name := range getAllTranslations() {
+	for name := range GetAllTranslations() {
 		names = append(names, name)
 	}
 	sort.Strings(names)

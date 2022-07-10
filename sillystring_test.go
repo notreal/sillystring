@@ -1,4 +1,4 @@
-package main
+package sillystring
 
 import (
 	"reflect"
