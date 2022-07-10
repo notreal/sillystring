@@ -1,2 +1,8 @@
-sillystring_cli
+# executables
+sillystring_tui
+!sillystring_tui/
 sillystring_web
+!sillystring_web/
+sillystring_cli
+!sillystring_cli/
+ss

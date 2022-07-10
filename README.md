@@ -1,10 +1,29 @@
 # Silly String
-Add visual flourish to text via CLI or web
+Add visual flourish to text via TUI, web or CLI
 
-## Usage:
+
+## Terminal UI:
 ```bash
-$ ./sillystring -h
-Usage of ./sillystring:
+$ ./sillystring_tui
+```
+![TUI screenshot](tui.gif "TUI screenshot")
+
+## Web UI:
+```bash
+$ ./sillystring_web -h
+Usage of ./sillystring_web:
+   -p  port of server
+   -s  run http server
+
+$ ./sillystring_web -s
+Serving at localhost:8080
+```
+![Web interface screenshot](sillystring_screen.png "Web interface screenshot")
+
+## CLI:
+```bash
+$ ./sillystring_cli -h
+Usage of ./sillystring_cli:
    -a  acute
   -ca  caron
   -ci  circumflex
@@ -14,24 +33,18 @@ Usage of ./sillystring:
    -f  fraktur
    -g  grave
   -ho  hook
-   -p  port of server
-   -s  run http server
    -t  tilde
-
-$ ./sillystring -a Acute
-Áćúté
-
-$ ./sillystring -s
-Serving at localhost:8080
+$ ./sillystring_cli -da silly string
+ṡillẏ ṡṫṙiṅġ
 ```
-
-## Web interface looks like:
-![Web interface screenshot](sillystring_screen.png "Web interface screenshot")
 
 ## To install
 - install Go 
 - clone this repo
-- run `go build`
+- run one of:
+  - `go build -o sillystring_tui cmd/sillystring_tui/main.go`
+  - `go build -o sillystring_web cmd/sillystring_web/main.go`
+  - `go build -o sillystring_cli cmd/sillystring_cli/main.go`
 
 ## Useful links to add translations
 https://www.fileformat.info/info/unicode/char/search.htm
