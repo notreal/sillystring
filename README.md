@@ -13,29 +13,31 @@ $ ./sillystring_tui
 $ ./sillystring_web -h
 Usage of ./sillystring_web:
    -p  port of server
-   -s  run http server
 
-$ ./sillystring_web -s
+$ ./sillystring_web
 Serving at localhost:8080
 ```
 ![Web interface screenshot](web.png "Web interface screenshot")
 
 ## CLI:
 ```bash
-$ ./sillystring_cli -h
-Usage of ./sillystring_cli:
-   -a  acute
-  -ca  caron
-  -ci  circumflex
-   -d  diaeresis
-  -da  dot_above
-  -db  dot_below
-   -f  fraktur
-   -g  grave
-  -ho  hook
-   -t  tilde
-$ ./sillystring_cli -da silly string
-ṡillẏ ṡṫṙiṅġ
+$ ./sillystring_cli Silly String
+🅢🅘🅛🅛🅨 🅢🅣🅡🅘🅝🅖
+𝕾𝖎𝖑𝖑𝖞 𝕾𝖙𝖗𝖎𝖓𝖌
+Siɭɭƴ Sƭɽiɳɠ
+🅂🄸🄻🄻🅈 🅂🅃🅁🄸🄽🄶
+รเՆՆץ รtՐเภﻮ
+Ⓢⓘⓛⓛⓨ Ⓢⓣⓡⓘⓝⓖ
+Ṡillẏ Ṡṫṙiṅġ
+Ṣịḷḷỵ Ṣṭṛịṇg
+𝓢𝓲𝓵𝓵𝔂 𝓢𝓽𝓻𝓲𝓷𝓰
+ƃuᴉɹʇS ʎʃʃᴉS
+Śíĺĺý Śtŕíńǵ
+🆂🅸🅻🅻🆈 🆂🆃🆁🅸🅽🅶
+ꌚꂑ꒒꒒ꐞ ꌚꋖꌅꂑꋊꁅ
+Šǐlly Štřǐňǧ
+Ŝîllŷ Ŝtrînĝ
+𝕊𝕚𝕝𝕝𝕪 𝕊𝕥𝕣𝕚𝕟𝕘
 ```
 
 ## To install

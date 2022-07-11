@@ -12,8 +12,7 @@ import (
 )
 
 var (
-	serve = flag.Bool("s", false, "run http server")
-	port  = flag.Int("p", 8080, "port of server")
+	port = flag.Int("p", 8080, "port of server")
 )
 
 func main() {
