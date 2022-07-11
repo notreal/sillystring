@@ -45,9 +45,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, "ParseForm() err: %v", err)
 			return
 		}
-		which := r.FormValue("which")
 		what := r.FormValue("what")
-		translated := ss.Translate(what, ss.GetAllTranslations()[which])
+		var translated string
+		for _, v := range ss.GetAllTranslations() {
+			translated += fmt.Sprintf("<div>%s</div>", ss.Translate(what, v))
+		}
 		fmt.Fprintf(w, "%s", translated)
 	default:
 		fmt.Fprintf(w, "Only GET and POST methods are supported.")

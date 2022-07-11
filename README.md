@@ -18,7 +18,7 @@ Usage of ./sillystring_web:
 $ ./sillystring_web -s
 Serving at localhost:8080
 ```
-![Web interface screenshot](sillystring_screen.png "Web interface screenshot")
+![Web interface screenshot](web.png "Web interface screenshot")
 
 ## CLI:
 ```bash
