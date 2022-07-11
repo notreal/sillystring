@@ -3,7 +3,6 @@
 package sillystring
 
 import (
-	"sort"
 	"strings"
 )
 
@@ -29,12 +28,12 @@ func GetAllTranslations() map[string]Translation {
 			[]rune("ǍČĎĚǦȞǏǨŇǑŘŠŤǓŽǎčěǧȟǐǰǩňǒřšǔž"),
 			false,
 		},
-		"circle-black": {
+		"circle_neg": {
 			alphabet,
 			[]rune("🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩"),
 			false,
 		},
-		"circle-white": {
+		"circle": {
 			alphabet,
 			[]rune("ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ"),
 			false,
@@ -74,12 +73,12 @@ func GetAllTranslations() map[string]Translation {
 			[]rune("𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃"),
 			false,
 		},
-		"square_white": {
+		"square": {
 			alphabet,
 			[]rune("🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉"),
 			false,
 		},
-		"square_black": {
+		"square_neg": {
 			alphabet,
 			[]rune("🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉"),
 			false,
@@ -108,16 +107,6 @@ func GetTranslation(which string) Translation {
 	return GetAllTranslations()[which]
 }
 
-// AvailableTranslations returns names of translations
-func AvailableTranslations() []string {
-	var names []string
-	for name := range GetAllTranslations() {
-		names = append(names, name)
-	}
-	sort.Strings(names)
-	return names
-}
-
 // Translate a string
 func Translate(s string, t Translation) string {
 	var out strings.Builder
@@ -138,6 +127,3 @@ func Translate(s string, t Translation) string {
 	}
 	return out.String()
 }
-
-// MaxTranslate returns translation with most characters changed
-// func MaxTranslate(s string) string {
